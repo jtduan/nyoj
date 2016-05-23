@@ -19,10 +19,10 @@ public class Main {
     }
 
     private static void everyTest(Scanner cin) {
-        System.out.println(solution());
+        solution();
     }
 
-    private static int solution() {
-        return 0;
+    private static void solution() {
+
     }
 }
