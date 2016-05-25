@@ -11,7 +11,6 @@ import java.util.Scanner;
  * 1、忘记修改文件名
  * 2、line62  for循环i=0写成了i=1
  * 3、忽略了完成排序后 length相等的情况
- * 4、Matrix类放到Main类里面将会编译错误
  * time:60
  * memery:805
  */
