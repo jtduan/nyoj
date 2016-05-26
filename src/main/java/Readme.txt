@@ -33,10 +33,14 @@
     - 考虑集合类型 和排序的集合类型SortedSet和SortedHashMap(key为数组下标的数组）
     - 考虑贪心算法
     - 使用双链表遍历
-    - 其他算法
+    - 树
+    - 图
+        - 欧拉回路
+        - 哈密顿回路
+        - BFS/DFS
+    - other
         - huffman
         - 数学算法
         - 排序算法
         - 二分查找
-        - BFS/DFS
         - 并查集
