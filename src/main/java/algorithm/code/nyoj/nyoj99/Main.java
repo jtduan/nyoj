@@ -5,7 +5,7 @@ import java.io.FileNotFoundException;
 import java.util.*;
 
 /**
- *  nyoj模板代码
+ *  未通过
  */
 public class Main {
     public static void main(String[] args) throws FileNotFoundException {
@@ -27,7 +27,6 @@ public class Main {
         cin.nextLine();
         Map<Character,SortedSet<String>> maps = new HashMap<Character,SortedSet<String>>(); //需要修改
         int[] nums = new int[26];
-        String
         for(int i=0;i<n;i++){
             String str = cin.nextLine();
             char key = str.charAt(0);
