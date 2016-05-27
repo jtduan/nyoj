@@ -1,9 +1,7 @@
 package algorithm.code.nyoj.nyoj58;
 
 import junit.framework.TestCase;
-import org.junit.Assert;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
 
 /**
  * Created by hero on 2016/5/25.
