@@ -8,6 +8,10 @@ public class Euler {
     public static int[][] map;
     public static boolean[][] vis;
 
+
+    public static int[] path;
+    public static int len_path=0;
+
     public Euler(int n) {
         map=new int[n][n];
         vis=new boolean[n][n];
@@ -17,6 +21,8 @@ public class Euler {
         int n = graph.length;
         map=new int[n][n];
         vis=new boolean[n][n];
+        path = new int [500];
+        len_path =0;
         for(int i=0;i<n;i++){
             for(int j=0;j<n;j++){
                 map[i][j]=graph[i][j];
@@ -85,9 +91,16 @@ public class Euler {
         return false;
     }
 
-    public static void printEuler(int[][] graph){
+    /**
+     * 输出欧拉回路或欧拉路径
+     * @param graph
+     * @return
+     */
+    public static int[] printEuler(int[][] graph){
         Euler e = new Euler(graph);
         e.euler(0);
+        path[len_path++] = 0;
+        return path;
     }
     void euler(int u)
     {
@@ -97,8 +110,25 @@ public class Euler {
             {
                 vis[u][v] = vis[v][u] = true;//如果是有向图的只需判断一个
                 euler(v);
-                System.out.printf("%d %d\n",u,v);
+//                System.out.printf("%d %d\n",u,v);
+                path[len_path++]=v;
             }
         }
+    }
+
+    public static void main(String[] args) {
+        int[][] graph = new int[][]{
+                {0,2,3,10,2},
+                {2,0,2,1,5},
+                {3,2,0,8,5},
+                {10,1,8,0,1},
+                {2,5,5,1,0},
+        };
+
+        int[] res = Euler.printEuler(graph);
+        for(int i=Euler.len_path-1;i>=0;i--){
+            System.out.print(res[i]+" ");
+        }
+        System.out.println();
     }
 }

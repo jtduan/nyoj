@@ -21,8 +21,9 @@ import java.util.Arrays;
  * 2、SFPA可以重复入队
  * <p>
  * 在没有负权边的图中，若SFPA采用优先队列每次都出最小的边，则与dijkstra算法相同
+ * SFPA算法寻找A与B的最短距离时需要找到A到所有点的最短距离
  */
-public class Prim {
+public class Prim_Dijkstra {
     static int MAX = Integer.MAX_VALUE;
 
     public static int prim(int[][] graph, int n) {
@@ -65,20 +66,16 @@ public class Prim {
     }
 
     public static void dijkstra(int[][] graph, int n) { //假设从0开始
-        char[] c = new char[]{'A', 'B', 'C', 'D', 'E', 'F', 'G', 'E', 'F'};
         int[] lowcost = new int[n];
         int[] flag = new int[n];
         int[] mst = new int[n];
-        int i, j, min, minid, sum = 0;
-
+        int i, j, min, minid;
         for (i = 1; i < n; i++) {
             lowcost[i] = graph[0][i];
             mst[i] = 0;
         }
         flag[0] = 1;
-
         for (i = 1; i < n; i++) {
-
             min = Integer.MAX_VALUE;
             minid = 0;
             for (j = 1; j < n; j++) {
@@ -88,9 +85,6 @@ public class Prim {
                 }
             }
 //            System.out.println(c[mst[minid]] + "到" + c[minid] + " 权值：" + min);
-
-//            sum += min;
-//            lowcost[minid] = 0;
             flag[minid] = 1;
             for (j = 1; j < n; j++) {
                 if (graph[minid][j] < Integer.MAX_VALUE && graph[minid][j] + lowcost[minid] < lowcost[j]) {
@@ -113,6 +107,9 @@ public class Prim {
          */
         int[] queue = new int[n];
         int[] mst = new int[n];
+        for(int i=0;i<n;i++){
+            mst[i]=i;
+        }
         int j, q, min, minid, sum = 0;
         queue[0] = 1;
         lowcost[0] = 0;
