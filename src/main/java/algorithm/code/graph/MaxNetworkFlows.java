@@ -3,7 +3,21 @@ package algorithm.code.graph;
 import java.util.Arrays;
 
 /**
- * Created by hero on 2016/5/27.
+ * 最大流问题
+ * 求解步骤:(类似于二分图)
+ * while(存在增广路径){
+ *     更新增广路径
+ * }
+ *
+ * 使用SFPA求最短增广路径(或者BFS,DFS,Dijkstra),每次求最短路径会减少while循环的次数
+ *
+ * 需要使用的几个变量:
+ * int[][] graph 原始有向图(各个线段最大流量)
+ * int[][] cur 当前网络的流量
+ *
+ * SFPA算法需要用到的变量
+ * lowest[] 各个点的最小距离
+ * queue[] 模拟队列(SFPA不要求先进先出)
  */
 public class MaxNetworkFlows {
     public static int[][] graph;

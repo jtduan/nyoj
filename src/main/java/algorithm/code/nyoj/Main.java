@@ -5,7 +5,7 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 /**
- *  nyoj模板代码
+ *  @author jtduan
  */
 public class Main {
     public static void main(String[] args) throws FileNotFoundException {

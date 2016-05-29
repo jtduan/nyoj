@@ -1,6 +1,6 @@
 package algorithm.code.graph;
 
-import algorithm.code.unionfindsets.UnionFindSet;
+import algorithm.code.utils.unionfindsets.UnionFindSet;
 
 import java.util.PriorityQueue;
 
@@ -92,6 +92,7 @@ public class MinimumSpanningTree {
     }
     /**
      * 求 连通图最小生成树Kruskal算法
+     * 依赖并查集
      */
     public static int[][] generateMinTree_Kruskal(int[][]graph){
         PriorityQueue<Line> queue = new PriorityQueue<Line>();

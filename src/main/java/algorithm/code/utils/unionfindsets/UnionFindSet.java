@@ -1,4 +1,4 @@
-package algorithm.code.unionfindsets;
+package algorithm.code.utils.unionfindsets;
 
 /**
  * 并查集模板代码
