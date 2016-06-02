@@ -78,7 +78,7 @@ public class BipartiteGraph {
         return true;
     }
 
-    public int[][] graph_col;//定义二分图中的所有线段颜色,某些情况下可以直接在graph上做标记,1为匹配线
+    public int[][] graph_col;//定义二分图中的所有线段颜色,某些情况下可以直接在graph上做标记(使用+1和-1),1为匹配线
     public int visited[];
 
 

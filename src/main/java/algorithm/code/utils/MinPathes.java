@@ -86,7 +86,7 @@ public class MinPathes {
         for (i = 0; i < n; i++) {
             min = Integer.MAX_VALUE;
             minid = 0;
-            for (j = 1; j < n; j++) {
+            for (j = 0; j < n; j++) {
                 if (lowcost[j] < min && visited[j] == 0) {
                     min = lowcost[j];
                     minid = j;
