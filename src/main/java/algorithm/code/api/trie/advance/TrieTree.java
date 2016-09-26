@@ -82,7 +82,7 @@ public class TrieTree<K extends Comparable, V> {
      * @param ks
      * @return
      */
-    public boolean remove(K[] ks) {
+    public void remove(K[] ks) {
         TrieNode cur = root;
         TrieNode pre = root;
         TrieNode waitRemove = null;
@@ -90,30 +90,30 @@ public class TrieTree<K extends Comparable, V> {
         while (i < ks.length) {
             TrieNode temp = cur.get(ks, i);
             if (temp == null) {
-                return false;
-            } else if (cur.next.size() > 1 || cur.priority!=null) {
+                return;
+            } else if (cur.next.size() > 1 || cur.priority != null) {
                 pre = cur;
                 waitRemove = temp;
             }
             cur = temp;
             i += temp.val.length;
         }
-        if(pre == root && waitRemove==null){
-            if(pre.next.size()==1){
-                pre.next.clear();
-                return true;
-            }
-            return false;
+        if (pre == root && waitRemove == null) {
+            pre.next.clear();
+            return;
         }
-        else{
+
+        if (waitRemove.next.size() >= 1) {
+            waitRemove.priority = null;
+        } else {
             pre.next.remove(waitRemove);
-            return true;
         }
     }
 
-    public boolean remove(List<K> ks) {
-        return remove((K[]) ks.toArray());
+    public void remove(List<K> ks) {
+        remove((K[]) ks.toArray());
     }
+
     /**
      * The type Trie node.
      *
@@ -192,7 +192,7 @@ public class TrieTree<K extends Comparable, V> {
             temp.next = this.next;
             temp.priority = this.priority;
             this.priority = null;
-            this.next=new ArrayList<>();
+            this.next = new ArrayList<>();
             this.next.add(temp);
             this.val = Arrays.copyOf(this.val, index);
         }
