@@ -8,15 +8,17 @@ import java.util.Arrays;
 public class Trie {
 
 	public static void main(String[] args) {
-		String str1 = "abc";
-		String str2 = "ade";
-		String str3 = "bcdji";
+		String str1 = "ade";
+		String str2 = "abc";
+		String str3 = "abcde";
+		String str4 = "afc";
 		TrieTree<String,Integer> tree = new TrieTree<>((a, b)->{
 			return a+b;
 		});
 		tree.add(str1.split(""),1);
 		tree.add(str2.split(""),1);
 		tree.add(str3.split(""),1);
+		tree.add(str4.split(""),1);
 		tree.add(str3.split(""),1);
 		tree.add(str3.split(""),1);
 		System.out.println(tree.find(str2.split("")));

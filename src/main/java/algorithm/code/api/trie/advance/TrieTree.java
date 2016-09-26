@@ -23,15 +23,16 @@ public class TrieTree<K extends Comparable, V> {
 		int i = 0;
 		while (i < ks.length) {
 			TrieNode temp = cur.update(ks, i);
-			if (temp == null) {
-				TrieNode node = new TrieNode(Arrays.copyOfRange(ks, i, ks.length));
-				cur.next.add(node);
-				cur = node;
-				break;
-			} else {
+//			if (temp == null) {
+//				TrieNode node = new TrieNode(Arrays.copyOfRange(ks, i, ks.length));
+//				cur.addChild(node);
+//				cur = node;
+//				break;
+//			}
+//			else {
 				cur = temp;
 				i += temp.val.length;
-			}
+//			}
 		}
 		cur.merge(cur.priority, v, biFunction);
 		return true;
@@ -100,18 +101,20 @@ public class TrieTree<K extends Comparable, V> {
 			int length = node.val.length;
 			TrieNode temp = new TrieNode(Arrays.copyOfRange(node.val, index, length));
 			temp.priority = node.priority;
+			node.priority = null;
 			node.next.add(temp);
 			node.val = Arrays.copyOf(node.val, index);
 		}
 
 		public TrieNode update(K[] ks, int start) {
-			int index = Collections.binarySearch(next, ks[start],(a,b)->{
-				return ((TrieNode)a).val[0].compareTo(b);
-			});
+			int index = findChild(ks[start]);
 			if(index < 0){
-				return null;
+				TrieNode node = new TrieNode(Arrays.copyOfRange(ks, start, ks.length));
+				addChild(node,-index-1);
+				return node;
 			}
-			int i = 0;
+			int i = 1;
+			start++;
 			TrieNode node = next.get(index);
 			while (start < ks.length && i< node.val.length && node.val[i].equals(ks[start])) {
 				i++;
@@ -120,10 +123,18 @@ public class TrieTree<K extends Comparable, V> {
 			if (i > 0 && i < node.val.length) {
 				divide(node,i);
 			}
-			if (i != 0) {
-				return node;
-			}
-			return null;
+			return node;
+		}
+
+		public void addChild(TrieNode child,int index) {
+			next.add(index,child);
+		}
+
+		public int findChild(K k) {
+			int index = Collections.binarySearch(next, k,(a,b)->{
+				return ((TrieNode)a).val[0].compareTo(b);
+			});
+			return index;
 		}
 	}
 }
