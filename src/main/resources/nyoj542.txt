@@ -1,0 +1,9 @@
+4
+H2O+Na=NaOH+H2
+Cl2+H2=HCl
+Fe+O2=Fe3O4
+NaOH+HCl=H2O+NaCl
+3
+H2O
+Na
+Cl2

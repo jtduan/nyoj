@@ -140,7 +140,7 @@ public class Euler {
     int n;
     int[] low;
     int[] dfn;
-    List<List<Integer>> list = new ArrayList<>();
+    List<List<Integer>> list = new ArrayList<List<Integer>>();
 
     public List<List<Integer>> getStrongConnectedComponent() {
         n = map.length;
@@ -170,7 +170,7 @@ public class Euler {
         }
         if(low[s]>low[stack.peek()])low[s]=low[stack.peek()];
         if(dfn[s]==low[s]){
-            List<Integer> sub_list=new ArrayList<>();
+            List<Integer> sub_list=new ArrayList<Integer>();
             while(stack.size()>=low[s]) {
                 int temp =stack.pop();
                 sub_list.add(temp);
