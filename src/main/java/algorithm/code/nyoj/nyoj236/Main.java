@@ -6,6 +6,7 @@ import java.util.*;
 
 /**
  * @author jtduan
+ * 原理：使用arr存储每一个递增序列已经到达的最大点，若新节点小于所有最大点，则增加arr长度，否则在arr中增加仅次于新最大点的一项
  */
 public class Main {
     public static void main(String[] args) throws FileNotFoundException {
@@ -55,19 +56,6 @@ public class Main {
         else{
             arr.set(-p-1,stick.W);
         }
-//        int i=0;
-//        while(i<arr.size()){
-//            if(stick.W < arr.get(i)) i++;
-//            else{
-//                break;
-//            }
-//        }
-//        if(i==arr.size()){
-//            arr.add(stick.W);
-//        }
-//        else{
-//            arr.set(i,stick.W);
-//        }
     }
 }
 

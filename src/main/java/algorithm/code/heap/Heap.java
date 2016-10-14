@@ -1,5 +1,8 @@
 package algorithm.code.heap;
 
+import java.util.Comparator;
+import java.util.PriorityQueue;
+
 public class Heap{
     /**
      * 最小堆的简单代码实现
