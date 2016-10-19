@@ -1,4 +1,4 @@
-package algorithm.code.pathes;
+package algorithm.code.graph;
 
 import java.util.*;
 
