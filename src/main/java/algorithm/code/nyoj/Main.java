@@ -36,6 +36,8 @@ public class Main {
     }
 
     private static void solution() {
-
+        int[] src = new int[]{1,2,3};
+        int[] dst = Arrays.copyOfRange(src,0,3);
+        System.out.println(dst.length);
     }
 }

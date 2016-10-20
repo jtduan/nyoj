@@ -131,7 +131,7 @@ public class Euler {
 
     /**
      * 有向图求强连通分量
-     * 采用Targan算法
+     * 采用Tarjan算法
      * Kosaraju算法更易懂
      */
 
