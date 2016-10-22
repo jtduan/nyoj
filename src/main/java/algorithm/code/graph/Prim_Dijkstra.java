@@ -24,120 +24,120 @@ import java.util.Arrays;
  * SFPA算法寻找A与B的最短距离时需要找到A到所有点的最短距离
  */
 public class Prim_Dijkstra {
-    static int MAX = Integer.MAX_VALUE;
+	static int MAX = Integer.MAX_VALUE;
 
-    public static int prim(int[][] graph, int n) {
-        char[] c = new char[]{'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'};
-        int[] lowcost = new int[n];
-        int[] mst = new int[n]; //存储该节点的上一节点
-        int i, j, min, minid, sum = 0;
+	public static int prim(int[][] graph, int n) {
+		char[] c = new char[]{'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'};
+		int[] lowcost = new int[n];
+		int[] mst = new int[n]; //存储该节点的上一节点
+		int i, j, min, minid, sum = 0;
 
-        for (i = 1; i < n; i++) {
-            lowcost[i] = graph[0][i];
-            mst[i] = 0;
-        }
+		for (i = 1; i < n; i++) {
+			lowcost[i] = graph[0][i];
+			mst[i] = 0;
+		}
 
-        for (i = 1; i < n; i++) {
+		for (i = 1; i < n; i++) {
 
-            min = Integer.MAX_VALUE;
-            minid = 0;
-            for (j = 1; j < n; j++) {
-                if (lowcost[j] < min && lowcost[j] != 0) {
-                    min = lowcost[j];
-                    minid = j;
-                }
-            }
+			min = Integer.MAX_VALUE;
+			minid = 0;
+			for (j = 1; j < n; j++) {
+				if (lowcost[j] < min && lowcost[j] != 0) {
+					min = lowcost[j];
+					minid = j;
+				}
+			}
 //            System.out.println(c[mst[minid]] + "到" + c[minid] + " 权值：" + min);
 
-            sum += min;
-            lowcost[minid] = 0;
+			sum += min;
+			lowcost[minid] = 0;
 
-            for (j = 1; j < n; j++) {
-                if (graph[minid][j] < lowcost[j]) {
-                    lowcost[j] = graph[minid][j];
-                    mst[j] = minid; //存储该节点的上一节点
-                }
-            }
-        }
-
-//        System.out.println("sum:" + sum);
-        return sum;
-
-    }
-
-    public static void dijkstra(int[][] graph, int n) { //假设从0开始
-        int[] lowcost = new int[n];
-        int[] flag = new int[n];
-        int[] mst = new int[n];
-        int i, j, min, minid;
-        for (i = 1; i < n; i++) {
-            lowcost[i] = graph[0][i];
-            mst[i] = 0;
-        }
-        flag[0] = 1;
-        for (i = 1; i < n; i++) {
-            min = Integer.MAX_VALUE;
-            minid = 0;
-            for (j = 1; j < n; j++) {
-                if (lowcost[j] < min && flag[j] == 0) {
-                    min = lowcost[j];
-                    minid = j;
-                }
-            }
-//            System.out.println(c[mst[minid]] + "到" + c[minid] + " 权值：" + min);
-            flag[minid] = 1;
-            for (j = 1; j < n; j++) {
-                if (graph[minid][j] < Integer.MAX_VALUE && graph[minid][j] + lowcost[minid] < lowcost[j]) {
-                    lowcost[j] = graph[minid][j] + lowcost[minid];
-                    mst[j] = minid; //该节点的上一节点，通过解析该数组可以打印出一条路径
-                }
-            }
-        }
-        for (int p = 0; p < n; p++) {
-            System.out.println(lowcost[p] + " " + mst[p]);
-        }
-    }
-
-    public static void SFPA(int[][] graph, int n) {//假设从0开始遍历
-        char[] c = new char[]{'A', 'B', 'C', 'D', 'E', 'F', 'G', 'E', 'F'};
-        int[] lowcost = new int[n];
-        Arrays.fill(lowcost, Integer.MAX_VALUE);
-        /**
-         * 将flag数组改为 队列用于记录待遍历节点
-         */
-        int[] queue = new int[n];
-        int[] mst = new int[n];
-        for(int i=0;i<n;i++){
-            mst[i]=i;
-        }
-        int j, q, min, minid, sum = 0;
-        queue[0] = 1;
-        lowcost[0] = 0;
-        while (true) {
-            q = 0;
-            while (q < n && queue[q] == 0) {
-                q++;
-            }
-            if (q == n) break;
-            for (j = 0; j < n; j++) {
-                if (graph[q][j] < Integer.MAX_VALUE && graph[q][j] + lowcost[q] < lowcost[j]) {
-                    lowcost[j] = graph[q][j] + lowcost[q];
-                    queue[j] = 1;
-                    mst[j] = q;
-                }
-            }
-            queue[q] = 0;
-        }
-        for (int p = 0; p < n; p++) {
-            System.out.println(lowcost[p] + " " + mst[p]);
-        }
-
-    }
+			for (j = 1; j < n; j++) {
+				if (graph[minid][j] < lowcost[j]) {
+					lowcost[j] = graph[minid][j];
+					mst[j] = minid; //存储该节点的上一节点
+				}
+			}
+		}
 
 //        System.out.println("sum:" + sum);
+		return sum;
+
+	}
+
+	public static void dijkstra(int[][] graph, int n) { //假设从0开始
+		int[] lowcost = new int[n];
+		int[] visited = new int[n];
+		int[] path = new int[n];
+		int i, j, min, minid;
+		for (i = 1; i < n; i++) {
+			lowcost[i] = graph[0][i];
+			path[i] = 0;
+		}
+		visited[0] = 1;
+		for (i = 1; i < n; i++) {
+			min = Integer.MAX_VALUE;
+			minid = 0;
+			for (j = 1; j < n; j++) {
+				if (lowcost[j] < min && visited[j] == 0) {
+					min = lowcost[j];
+					minid = j;
+				}
+			}
+//            System.out.println(c[path[minid]] + "到" + c[minid] + " 权值：" + min);
+			visited[minid] = 1;
+			for (j = 1; j < n; j++) {
+				if (graph[minid][j] < Integer.MAX_VALUE && graph[minid][j] + lowcost[minid] < lowcost[j]) {
+					lowcost[j] = graph[minid][j] + lowcost[minid];
+					path[j] = minid; //该节点的上一节点，通过解析该数组可以打印出一条路径
+				}
+			}
+		}
+		for (int p = 0; p < n; p++) {
+			System.out.println(lowcost[p] + " " + path[p]);
+		}
+	}
+
+	public static void SFPA(int[][] graph, int n) {//假设从0开始遍历
+		char[] c = new char[]{'A', 'B', 'C', 'D', 'E', 'F', 'G', 'E', 'F'};
+		int[] lowcost = new int[n];
+		Arrays.fill(lowcost, Integer.MAX_VALUE);
+		/**
+		 * 将flag数组改为 队列用于记录待遍历节点
+		 */
+		int[] queue = new int[n];
+		int[] mst = new int[n];
+		for (int i = 0; i < n; i++) {
+			mst[i] = i;
+		}
+		int j, q, min, minid, sum = 0;
+		queue[0] = 1;
+		lowcost[0] = 0;
+		while (true) {
+			q = 0;
+			while (q < n && queue[q] == 0) {
+				q++;
+			}
+			if (q == n) break;
+			for (j = 0; j < n; j++) {
+				if (graph[q][j] < Integer.MAX_VALUE && graph[q][j] + lowcost[q] < lowcost[j]) {
+					lowcost[j] = graph[q][j] + lowcost[q];
+					queue[j] = 1;
+					mst[j] = q;
+				}
+			}
+			queue[q] = 0;
+		}
+		for (int p = 0; p < n; p++) {
+			System.out.println(lowcost[p] + " " + mst[p]);
+		}
+
+	}
+
+//        System.out.println("sum:" + sum);
 
 
-    public static void main(String[] args) {
+	public static void main(String[] args) {
 //        int[][] map = new int[][]{
 //                {0, 10, MAX, MAX, MAX, 11, MAX, MAX, MAX},
 //                {10, 0, 18, MAX, MAX, MAX, 16, MAX, 12},
@@ -150,15 +150,15 @@ public class Prim_Dijkstra {
 //                {MAX, 12, 8, 21, MAX, MAX, MAX, MAX, 0}
 //        };
 
-        int[][] map = new int[][]{
-                {0,4,8,9,4},
-                {4,0,9,9,10},
-                {8,9,0,1,9},
-                {9,9,1,0,2},
-                {4,10,9,2,0}};
+		int[][] map = new int[][]{
+				{0, 4, 8, 9, 4},
+				{4, 0, 9, 9, 10},
+				{8, 9, 0, 1, 9},
+				{9, 9, 1, 0, 2},
+				{4, 10, 9, 2, 0}};
 //        SFPA(map, map.length);
 //        dijkstra(map, map.length);
-        System.out.println(prim(map,map.length));
-    }
+		System.out.println(prim(map, map.length));
+	}
 
 }
