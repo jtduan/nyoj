@@ -20,5 +20,33 @@ package awesome;
  *
  * 借助于其他数据结构（HashMap），并查集可以“向后看”(Leetcode128,每一个数据指向比它大1的父节点，节点最多的树即为结果)
  */
-public class UnionFind {
+public class UnionFind
+{
+	public static int aMethod(int i)throws Exception
+	{
+		try{
+			return 10/i;
+		}
+		catch (Exception ex)
+		{
+			throw new Exception("exception in a Method");
+		} finally{
+			System.out.printf("finally");
+		}
+	}
+
+	public static void main(String [] args)
+	{
+		try
+		{
+			aMethod(0);
+		}
+		catch (Exception ex)
+		{
+			System.out.printf("exception in main");
+		}
+		System.out.printf("finished");
+	}
+
+
 }

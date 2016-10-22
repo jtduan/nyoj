@@ -1,6 +1,7 @@
 import org.apache.commons.collections.iterators.ArrayListIterator;
 import org.junit.Test;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -46,4 +47,13 @@ public class Note {
 	/**
 	 * 注意DFS退出条件
 	 */
+
+	/**
+	 * double类型保留2位小数
+	 */
+	public void parseDouble(){
+		NumberFormat ddf1= NumberFormat.getNumberInstance();
+		ddf1.setMaximumFractionDigits(2);
+		ddf1.setMinimumFractionDigits(2);
+	}
 }
