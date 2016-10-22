@@ -36,6 +36,8 @@ public class Abbreviator {
 
 	private boolean isCharacter(char c) {
 		return String.valueOf(c).matches("\\w");
+
+
 	}
 
 

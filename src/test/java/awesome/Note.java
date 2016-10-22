@@ -56,4 +56,15 @@ public class Note {
 		ddf1.setMaximumFractionDigits(2);
 		ddf1.setMinimumFractionDigits(2);
 	}
+
+	/**
+	 * 判断char是否为字母，数字，应当使用Character类
+	 */
+	public void checkCharacter(){
+		Character.isLetter('A');
+		Character.isWhitespace(' ');
+		Character.isDigit('0');
+		Character.toLowerCase('A');
+		Character.isLowerCase('a');
+	}
 }
