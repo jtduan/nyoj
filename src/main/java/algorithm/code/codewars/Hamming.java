@@ -1,5 +1,7 @@
 package algorithm.code.codewars;
 
+import java.util.Arrays;
+
 /**
  * Created by djt on 10/23/16.
  */
@@ -18,6 +20,7 @@ public class Hamming {
 			if (nums[index_5] * 5 == min) index_5++;
 			nums[i] = min;
 		}
+
 		return nums[n - 1];
 	}
 }

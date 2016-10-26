@@ -1,27 +1,25 @@
 package algorithm.code.test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
+import java.util.*;
 
 /**
  * Created by hero on 2016/5/23.
  */
 public class Test {
     public static void main(String[] args) {
-        Integer[] num = new Integer[]{1,4,7,2,9,3,6};
-        Arrays.sort(num, new Comparator<Integer>(){
-
-            @Override
-            public int compare(Integer o1, Integer o2) {
-                if(o1>o2) return 1;
-                if(o1<o2) return -1;
-                else return 0;
-            }
-        });
-        for(int i=0;i<num.length;i++){
-            System.out.print(num[i]+" ");
-        }
-        System.out.println();
+        TreeMap<Integer,Integer> map =new TreeMap<>();
+        map.put(1,11);
+        map.put(2,15);
+        map.put(3,19);
+        System.out.println("ss");
+        ArrayList list = new ArrayList();
+        list.add(5);
+        list.add(8);
+        list.add(1,6);
+        System.out.println("ss");
+        List<String> s = Collections.checkedList(list,String.class);
+        s.add("ss");
+        s.remove(0);
+        System.out.println(s.size());
     }
 }
