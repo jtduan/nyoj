@@ -161,4 +161,13 @@ public class Note {
 		"1234".chars().boxed().map((i)->String.valueOf(i)).collect(Collectors.toList());
 	}
 
+	/**
+	 * 使用map的getOrDefault()方法可以节省一个ifelse
+	 */
+	@Test
+	public void testMap(){
+		Map<Integer, Integer> map = new HashMap<>();
+		map.put(102,map.getOrDefault(102,1));
+	}
+
 }
