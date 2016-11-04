@@ -170,4 +170,7 @@ public class Note {
 		map.put(102,map.getOrDefault(102,1));
 	}
 
+	/**
+	 * 判断字符串中是否存在否一个字符，使用String.indexOf()效率更高(Leetcode345)
+	 */
 }
