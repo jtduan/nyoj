@@ -4,51 +4,45 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
+import static junit.framework.TestCase.assertEquals;
 
-/**
- * Created by djt on 10/23/16.
- */
 public class Xbonacci {
 
-	public double[] xbonacci(double[] signature, int n) {
-		double res[] = new double[n];
-		for (int i = 0; i < Math.min(signature.length, n); i++) {
-			res[i] = signature[i];
-		}
-		for (int i = signature.length; i < n; i++) {
-			double sum = 0;
-			for (int j = i - signature.length; j < i; j++) {
-				sum += res[j];
-			}
-			res[i] = sum;
-		}
-		return res;
-	}
+    public double[] tribonacci(double[] s, int n) {
+//        if(n==0) return new double[0];
+        double[] res = new double[n];
+        for (int i = 0; i < Math.min(n, 3); i++) {
+            res[i] = s[i];
+        }
+        if (n >=3) {
+            for (int i = 3; i < n; i++) {
+                res[i] = res[i - 1] + res[i - 2] + res[i - 3];
+            }
+        }
+        return res;
+    }
 
+    private Xbonacci variabonacci;
 
-	private Xbonacci variabonacci;
+    @Before
+    public void setUp() throws Exception {
+        variabonacci = new Xbonacci();
+    }
 
-	@Before
-	public void setUp() throws Exception {
-		variabonacci = new Xbonacci();
-	}
+    @After
+    public void tearDown() throws Exception {
+        variabonacci = null;
+    }
 
-	@After
-	public void tearDown() throws Exception {
-		variabonacci = null;
-	}
+    @Test
+    public void basicTests() {
+        assertArrayEquals(new double[]{1, 1, 1, 3, 5, 9, 17, 31, 57, 105}, variabonacci.tribonacci(new double[]{1, 1, 1}, 10));
+        assertArrayEquals(new double[]{0, 0, 1, 1, 2, 4, 7, 13, 24, 44}, variabonacci.tribonacci(new double[]{0, 0, 1}, 10));
+        assertArrayEquals(new double[]{0, 1, 1, 2, 4, 7, 13, 24, 44, 81}, variabonacci.tribonacci(new double[]{0, 1, 1}, 10));
+    }
 
-	@Test
-	public void basicTests() {
-		assertArrayEquals(new double[]{0, 1, 1, 2, 3, 5, 8, 13, 21, 34}, variabonacci.xbonacci(new double[]{0, 1}, 10));
-		assertArrayEquals(new double[]{1, 1, 2, 3, 5, 8, 13, 21, 34, 55}, variabonacci.xbonacci(new double[]{1, 1}, 10));
-		assertArrayEquals(new double[]{0, 0, 0, 0, 1, 1, 2, 4, 8, 16}, variabonacci.xbonacci(new double[]{0, 0, 0, 0, 1}, 10));
-		assertArrayEquals(new double[]{1, 0, 0, 0, 0, 0, 1, 2, 3, 6}, variabonacci.xbonacci(new double[]{1, 0, 0, 0, 0, 0, 1}, 10));
-	}
-
-	private void assertArrayEquals(double[] expecteds, double[] actuals) {
-		for (int i = 0; i < actuals.length; i++)
-			assertEquals(expecteds[i], actuals[i], 1e-10);
-	}
+    private void assertArrayEquals(double[] expecteds, double[] actuals) {
+        for (int i = 0; i < actuals.length; i++)
+            assertEquals(expecteds[i], actuals[i], 1e-10);
+    }
 }

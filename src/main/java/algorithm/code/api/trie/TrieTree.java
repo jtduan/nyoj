@@ -8,6 +8,11 @@ import java.util.function.BiFunction;
 /**
  * Created by djt on 9/25/16.
  * Todo:提供二分Comparable API
+ * 前缀树的应用(Tire)
+ * 编码规范：
+ * 1 next往往采用数组形式(hash),提高速度  ： 本例待优化
+ * 2 Tire树 往往在val值不为空的节点上存储字典的Key（整个字符串）   :本例待优化
+ *
  */
 
 public class TrieTree<K, V> {

@@ -1,9 +1,14 @@
+package awesome;
+
 import org.apache.commons.collections.iterators.ArrayListIterator;
+import org.apache.commons.lang.math.IntRange;
 import org.junit.Test;
 
 import java.text.NumberFormat;
 import java.util.*;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 /**
@@ -98,13 +103,28 @@ public class Note {
 
 
 	/**
+	 * Integer.bitCount()可以统计1的个数
+	 */
+
+	/**
+	 * Arrays.sort(num,start,end)可以对数组的一部分进行排序
+	 */
+
+
+	/**
 	 * 使用JAVA8流式编程
 	 */
 	public void streams(){
 		/**
 		 * string转chars流
 		 */
-		"shd".chars().map((c)->c-'a');
+		"shd".chars(); //返回IntStream
+
+		/**
+		 * char[]数组转换为流
+		 */
+		char[] chars = new char[]{'3','v'};
+		IntStream.range(0, chars.length).mapToObj(i -> chars[i]);
 
 		/**
 		 * 数组转换为流
@@ -115,13 +135,42 @@ public class Note {
 		 */
 		new ArrayList<>().stream().collect(Collectors.toList());
 	}
+	/**
+	 * JAVA8基础
+	 * Consumer 消费者(T)->{}
+	 * Function 类型转换(T)->U
+	 * Supplier 生产者()->T
+	 * Predicate (T)->boolean   : filter
+	 *
+	 *
+	 * ===流中常用的函数===
+	 * filter :过滤
+	 * map ：相同类型变换（IntStream 只能变换为int）（Stream<Object> 可以任意变换）
+	 * mapToObj: 不同类型变换(使用boxed()函数可以完成IntStream转换为Stream<Integer>)
+	 * distinct 去除重复
+	 * comparing 比较器
+	 * IntStream.range() 遍历（含左不含右）
+	 *
+	 *
+	 * ====flatMap====
+	 * flatMap的参数一定是含有流的表达式...
+	 * numbers1.stream().flatMap(i -> numbers2.stream());
+	 */
+	@Test
+	public void test(){
+		"1234".chars().boxed().map((i)->String.valueOf(i)).collect(Collectors.toList());
+	}
 
 	/**
-	 * Integer.bitCount()可以统计1的个数
+	 * 使用map的getOrDefault()方法可以节省一个ifelse
 	 */
+	@Test
+	public void testMap(){
+		Map<Integer, Integer> map = new HashMap<>();
+		map.put(102,map.getOrDefault(102,1));
+	}
 
 	/**
-	 * Arrays.sort(num,start,end)可以对数组的一部分进行排序
+	 * 判断字符串中是否存在否一个字符，使用String.indexOf()效率更高(Leetcode345)
 	 */
-
 }
