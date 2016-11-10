@@ -173,4 +173,10 @@ public class Note {
 	/**
 	 * 判断字符串中是否存在否一个字符，使用String.indexOf()效率更高(Leetcode345)
 	 */
+
+	/**
+	 * 构造一个定长的数组，可以采用
+	 * result.add(Arrays.asList(nums[i], nums[j], nums[k]))
+	 * 简化代码长度
+	 */
 }
