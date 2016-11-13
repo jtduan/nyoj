@@ -56,10 +56,10 @@ public class Hamiton {
     public static void main(String[] args) {
         int[][] graph = new int[][]{
                 {0,1,1,2,2},
-                {1,0,0,0,0},
+                {1,0,0,0,1},
                 {1,0,0,1,1},
                 {2,0,1,0,1},
-                {2,0,1,1,0}};
+                {2,1,1,1,0}};
         int[] res = getHamiton(graph,0);
         for(int i=0;i<res.length;i++){
             System.out.println(res[i]);
