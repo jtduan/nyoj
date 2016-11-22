@@ -1,7 +1,8 @@
+package awesome;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import sun.jvm.hotspot.utilities.Interval;
 
 import java.util.ArrayList;
 import java.util.List;
