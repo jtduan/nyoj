@@ -60,6 +60,7 @@ public class Note {
 		NumberFormat ddf1= NumberFormat.getNumberInstance();
 		ddf1.setMaximumFractionDigits(2);
 		ddf1.setMinimumFractionDigits(2);
+		ddf1.format(2.845);
 	}
 
 	/**

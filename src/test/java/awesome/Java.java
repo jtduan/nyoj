@@ -1,4 +1,9 @@
+package awesome;
+
 import org.junit.Test;
+
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by djt on 10/22/16.
@@ -39,5 +44,39 @@ public class Java {
 			System.out.printf("exception in main");
 		}
 		System.out.printf("finished");
+	}
+
+	public static void main(String[] args) {
+		Set<Node> set = new HashSet<>();
+		set.add(new Node("aaa",10));
+		set.add(new Node("bbb",20));
+		set.remove(new Node("mmm",10));
+		set.add(new Node("ccc",10));
+		System.out.println(Byte.valueOf("+1"));
+	}
+}
+class Node{
+	String val;
+	int num;
+
+	public Node(String val, int num) {
+		this.val = val;
+		this.num = num;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+
+		Node node = (Node) o;
+
+		return num == node.num;
+
+	}
+
+	@Override
+	public int hashCode() {
+		return num;
 	}
 }

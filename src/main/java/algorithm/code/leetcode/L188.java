@@ -8,26 +8,32 @@ package algorithm.code.leetcode;
 
 public class L188 {
     public int maxProfit(int k, int[] prices) {
-        if (prices == null || prices.length == 0) return 0;
-        int len = prices.length;
-        int[][] profits = new int[len][len];
-        for (int i = 0; i < len; i++) {
-            int min = prices[i];
-            profits[i][i] = 0;
-            for (int j = i + 1; j < len; j++) {
-                profits[i][j] = Math.max(profits[i][j - 1], prices[j] - min);
-                min = Math.min(min, prices[j]);
-            }
-        }
-
-        int[][] res = new int[k+1][len];
+        if (prices.length == 0) return 0;
+        if (k > prices.length / 2) return getMax(prices);
+        int[][] golbal = new int[k + 1][prices.length];
+        int[][] cur = new int[k + 1][prices.length];
         for (int i = 1; i <= k; i++) {
-            for (int j = 0; j < len; j++) {
-                for (int p = 0; p < j; p++) {
-                    res[i][j] = Math.max(res[i - 1][p] + profits[p][j], res[i][j]);
-                }
+            for (int j = 1; j < prices.length; j++) {
+                cur[i][j] = Math.max(cur[i][j - 1] + (prices[j] - prices[j - 1]), golbal[i - 1][j - 1]);
+                golbal[i][j] = Math.max(golbal[i][j - 1], cur[i][j]);
+            }
+            boolean flag = true;
+            for (int j = 1; j < prices.length; j++) {
+                if (golbal[i][j] != golbal[i - 1][j]) flag = false;
+            }
+            if (flag) return golbal[i][prices.length - 1];
+        }
+        return golbal[k][prices.length - 1];
+    }
+
+    private int getMax(int[] prices) {
+        int res = 0;
+        for (int i = 1; i < prices.length; i++) {
+            if (prices[i] > prices[i - 1]) {
+                res += prices[i] - prices[i - 1];
             }
         }
-        return res[k][len - 1];
+        return res;
     }
+
 }

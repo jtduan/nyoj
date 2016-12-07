@@ -35,7 +35,7 @@ public class HttpClientDemo {
     public static CookieStore cookieStore = new BasicCookieStore();
 
     public static final String userName = "18141920147";
-    public static final String userPwd = "";
+    public static final String userPwd = "djt178508529";
 
     public static final String date = "2016-12-05";
     public static final String duty = "2";
@@ -76,22 +76,22 @@ public class HttpClientDemo {
 
     public static void main(String[] args) throws IOException, InterruptedException {
         doLogin();
-        while (true) {
-            if (loadDoctor()) {
-                break;
-            }
-            Thread.sleep(100);
-        }
-        if (verfiyCode == 0) {
-            if (doSendVerfiCode()) {
-                System.out.println("true");
-            } else {
-                System.out.println("false");
-            }
-            Scanner scanner = new Scanner(System.in);
-            verfiyCode = scanner.nextInt();
-        }
-        doPreOrder();
+//        while (true) {
+//            if (loadDoctor()) {
+//                break;
+//            }
+//            Thread.sleep(100);
+//        }
+//        if (verfiyCode == 0) {
+//            if (doSendVerfiCode()) {
+//                System.out.println("true");
+//            } else {
+//                System.out.println("false");
+//            }
+//            Scanner scanner = new Scanner(System.in);
+//            verfiyCode = scanner.nextInt();
+//        }
+//        doPreOrder();
     }
 
     private static boolean doPreOrder() throws IOException {
