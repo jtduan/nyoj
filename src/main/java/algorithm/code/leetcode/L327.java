@@ -1,9 +1,6 @@
 package algorithm.code.leetcode;
 
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
-import java.util.TreeSet;
+import java.util.*;
 
 /**
  * @author jtduan
@@ -24,6 +21,7 @@ public class L327 {
             if (map.containsKey(sum[i])) map.put(sum[i], map.get(sum[i]) + 1);
             else map.put(sum[i], 1);
         }
+        Arrays.sort(new int[]{1,2,3});
         return res;
     }
 }
