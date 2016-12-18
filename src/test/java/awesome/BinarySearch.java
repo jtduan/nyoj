@@ -27,7 +27,7 @@ public class BinarySearch {
      * 递归写法
      */
     public static int binarySearch(int[]nums,int low,int high,int target){
-        if(low>high) throw new RuntimeException();
+        if(low>high) throw new IllegalArgumentException();
         int mid = low+(high-low)/2;
         if(low==high){
             return nums[low]==target?low:-low-1;

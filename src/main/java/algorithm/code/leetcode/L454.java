@@ -1,34 +1,29 @@
 package algorithm.code.leetcode;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by djt on 11/13/16.
  */
 public class L454 {
 	public int fourSumCount(int[] A, int[] B, int[] C, int[] D) {
-		Arrays.sort(C);
-		Arrays.sort(D);
-		int len = A.length;
-		int res = 0;
-		for (int i = 0; i < len; i++) {
-			for (int j = 0; j < len; j++) {
-				int l = 0;
-				int r = len - 1;
-				while (l < len && r >= 0) {
-					if (A[i] + B[j] + C[l] + D[r] < 0) l++;
-					else if (A[i] + B[j] + C[l] + D[r] > 0) r--;
-					else {
-						int x = 0;
-						int y = 0;
-						while (l + x < len && C[l + x] == C[l]) x++;
-						while (r - y >= 0 && D[r - y] == D[r]) y++;
-						res += x * y;
-						l = l + x;
-						r = r - y;
-					}
-				}
+		Map<Integer,Integer> map1 = new HashMap<>();
+		Map<Integer,Integer> map2 = new HashMap<>();
+		for(int i=0;i<A.length;i++){
+			for(int j=0;j<B.length;j++){
+				map1.put(A[i]+B[j],map1.getOrDefault(A[i]+B[j],0)+1);
 			}
+		}
+		for(int i=0;i<C.length;i++){
+			for(int j=0;j<D.length;j++){
+				map2.put(C[i]+D[j],map2.getOrDefault(C[i]+D[j],0)+1);
+			}
+		}
+		int res=0;
+		for(Integer num:map1.keySet()){
+			res+=map1.get(num)*map2.getOrDefault(-num,0);
 		}
 		return res;
 	}
